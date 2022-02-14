@@ -1,4 +1,4 @@
-import { signupUser } from './fetch-utils.js';
+import { signupUser, signInUser } from './fetch-utils.js';
 
 const signInForm = document.getElementById('sign-in');
 const signInEmail = document.getElementById('sign-in-email');
@@ -21,4 +21,15 @@ signUpForm.addEventListener('submit', async (e) => {
     };
     const resp = await signupUser(user.email, user.password);
     console.log(resp.user);
+});
+
+signInForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(signInForm);
+    const user = {
+        email: formData.get('email'),
+        password: formData.get('password')
+    };
+    const resp = await signInUser(user.email, user.password);
+    console.log(resp);
 });
