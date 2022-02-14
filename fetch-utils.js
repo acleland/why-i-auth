@@ -9,11 +9,11 @@ export function getUser() {
 }
 
 export async function signupUser(email, password) {
-    const { user, session, error } = await supabase.auth.signUp({
+    const resp = await client.auth.signUp({
         email: email,
         password: password
     });
-    
+    return resp;
 }
 
 export async function signInUser(email, password) {}
