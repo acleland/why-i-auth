@@ -8,7 +8,13 @@ export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
 
-export async function signupUser(email, password) {}
+export async function signupUser(email, password) {
+    const { user, session, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+    });
+    
+}
 
 export async function signInUser(email, password) {}
 
